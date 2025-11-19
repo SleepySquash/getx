@@ -108,9 +108,11 @@ class GetXState<T extends DisposableInterface> extends State<GetX<T>> {
   @override
   void dispose() {
     if (widget.dispose != null) widget.dispose!(this);
-    if (_isCreator! || widget.assignId) {
-      if (widget.autoRemove && GetInstance().isRegistered<T>(tag: widget.tag)) {
+    if (widget.autoRemove && (_isCreator! || widget.assignId)) {
+      if (widget.global) {
         GetInstance().delete<T>(tag: widget.tag);
+      } else {
+        controller?.onDelete();
       }
     }
     _subs.cancel();

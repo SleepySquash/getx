@@ -173,9 +173,13 @@ class GetBuilderState<T extends GetxController> extends State<GetBuilder<T>>
   void dispose() {
     super.dispose();
     widget.dispose?.call(this);
-    if (_isCreator! || widget.assignId) {
-      if (widget.autoRemove && GetInstance().isRegistered<T>(tag: widget.tag)) {
+    if (widget.autoRemove && (_isCreator! || widget.assignId)) {
+      if (widget.global) {
         GetInstance().delete<T>(tag: widget.tag);
+      } else {
+        if (controller is GetLifeCycleBase) {
+          (controller as GetLifeCycleBase).onDelete();
+        }
       }
     }
 
