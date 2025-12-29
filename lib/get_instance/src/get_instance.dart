@@ -307,6 +307,10 @@ class GetInstance {
     }
   }
 
+  List<S> findAll<S>() {
+    return _singl.values.map((e) => e.dependency).whereType<S>().toList();
+  }
+
   /// Generates the key based on [type] (and optionally a [name])
   /// to register an Instance Builder in the hashmap.
   String _getKey(Type type, String? name) {

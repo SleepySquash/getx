@@ -68,6 +68,8 @@ extension Inst on GetInterface {
   /// each time you call `Get.find()`.
   S find<S>({String? tag}) => GetInstance().find<S>(tag: tag);
 
+  List<S> findAll<S>() => GetInstance().findAll<S>();
+
   /// Injects an `Instance<S>` in memory.
   ///
   /// No need to define the generic type `<[S]>` as it's inferred
