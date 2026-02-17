@@ -1,4 +1,4 @@
-part of rx_types;
+part of 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 /// global object that registers against `GetX` and `Obx`, and allows the
 /// reactivity
@@ -115,7 +115,7 @@ mixin RxObjectMixin<T> on NotifyManager<T> {
 
   /// Returns a [StreamSubscription] similar to [listen], but with the
   /// added benefit that it primes the stream with the current [value], rather
-  /// than waiting for the next [value]. This should not be called in `onInit`
+  /// than waiting for the next [value]. This should not be called in [onInit]
   /// or anywhere else during the build process.
   StreamSubscription<T> listenAndPump(void Function(T event) onData,
       {Function? onError, void Function()? onDone, bool? cancelOnError}) {
@@ -131,7 +131,7 @@ mixin RxObjectMixin<T> on NotifyManager<T> {
     return subscription;
   }
 
-  /// Binds an existing `Stream<T>` to this Rx<T> to keep the values in sync.
+  /// Binds an existing `Stream<T>` to this `Rx<T>` to keep the values in sync.
   /// You can bind multiple sources to update the value.
   /// Closing the subscription will happen automatically when the observer
   /// Widget (`GetX` or `Obx`) gets unmounted from the Widget tree.
@@ -236,8 +236,8 @@ abstract class _RxImpl<T> extends RxNotifier<T> with RxObjectMixin<T> {
   ///
   /// For example, supposed we have a `int seconds = 2` and we want to animate
   /// from invisible to visible a widget in two seconds:
-  /// RxEvent<int>.call(seconds);
-  /// then after a click happens, you want to call a RxEvent<int>.call(seconds).
+  /// `RxEvent<int>.call(seconds)`;
+  /// then after a click happens, you want to call a `RxEvent<int>.call(seconds)`.
   /// By doing `call(seconds)`, if the value being held is the same,
   /// the listeners won't trigger, hence we need this new `trigger` function.
   /// This will refresh the listener of an AnimatedWidget and will keep

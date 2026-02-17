@@ -1,3 +1,8 @@
+## [4.7.3]
+
+Fix Snackbar in Flutter 3.38
+
+
 ## [4.7.2]
 
 Fix PopScope widget

@@ -66,13 +66,19 @@ class First extends StatelessWidget {
             // Get.changeTheme(
             //     context.isDarkMode ? ThemeData.light() : ThemeData.dark());
 
-            Get.defaultDialog(
-              title: "Hello",
-              content: Text("This is a simple dialog box"),
-              confirm: MaterialButton(
-                child: Text("OK"),
-                onPressed: Get.back,
-              ),
+            // Get.defaultDialog(
+            //   title: "Hello",
+            //   content: Text("This is a simple dialog box"),
+            //   confirm: MaterialButton(
+            //     child: Text("OK"),
+            //     onPressed: Get.back,
+            //   ),
+            // );
+
+            Get.snackbar(
+              "Hi",
+              "I'm a modern snackbar",
+              snackPosition: SnackPosition.BOTTOM,
             );
           },
         ),
@@ -98,6 +104,7 @@ class Second extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
+      // ignore: deprecated_member_use
       onPopInvoked: (didPop) {
         if (!didPop) {
           print('Back navigation blocked');
